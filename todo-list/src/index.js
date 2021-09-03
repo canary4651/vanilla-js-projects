@@ -1,9 +1,16 @@
-function main() {
-  const root = document.getElementById('root');
+import store from './store.js';
 
-  root.innerHTML = `
-      <h1>Hello, World</h1>
-    `;
-}
+import App from './App.js';
 
-main();
+const root = document.getElementById('root');
+
+const update = () => {
+  root.innerHTML = '';
+  root.appendChild(App());
+};
+
+store.initiate({ updateView: update });
+
+(() => {
+  update();
+})();
